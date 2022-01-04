@@ -1,0 +1,18 @@
+[
+	{
+		"id": "1",
+		"name": "Teste",
+		"cameras": [
+			{
+				"ip": "127.0.0.1:4022/plate",
+				"name": "camera plate",
+				"type": "plate"
+			},
+			{
+				"ip": "127.0.0.1:4022/container",
+				"name": "camera container",
+				"type": "container"
+			}
+		]
+	}
+]
