@@ -1,18 +1,29 @@
 [
 	{
-		"id": "1",
-		"name": "Teste",
-		"cameras": [
-			{
-				"ip": "127.0.0.1:4022/plate",
-				"name": "camera plate",
-				"type": "plate"
-			},
-			{
-				"ip": "127.0.0.1:4022/container",
-				"name": "camera container",
-				"type": "container"
-			}
-		]
+	  "id": "123456",
+	  "name": "Gate Free Flow",
+	  "cameras": [
+		{
+		  "host": "10.17.1.34",
+		  "ip": "10.17.1.34",
+		  "port": 50000,
+		  "name": "10.17.1.34",
+		  "type": "plate"
+		},
+		{
+		  "host": "10.17.1.12:50001",
+		  "ip": "10.17.1.12",
+		  "port": 50001,
+		  "name": "CAMEMU",
+		  "type": "plate"
+		},
+		{
+		  "host": "http://10.48.77.221:8080/cgi-bin/jpg/image.cgi",
+		  "ip": "10.48.77.221",
+		  "port": 8080,
+		  "name": "HTTP",
+		  "type": "plate"
+		}
+	  ]
 	}
-]
+  ]

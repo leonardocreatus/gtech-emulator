@@ -37,21 +37,19 @@ for(let g of _gates){
 
 console.log('Gates', gates);
 
+// console.log('isValid', gates.get(123456).isValidCamera("10.17.1.34"));
+
 app.get('/list', (req, res) => {
     return res.send(_gates);
 });
 
 app.get('/gates', (req, res) => {
-    _gates.forEach(({cameras, name}) => console.log(`name: ${name}, cameras: ${cameras}`));
+    _gates.forEach(({cameras, name}) => console.log(`name: ${name}, cameras: ${cameras.host}`));
     return res.send(_gates);
 });
 
-// curl -X GET "http://10.17.1.20/rest/api/v1/login/validation" -H "accept: application/json" -H "authorization: Basic YWRtaW46YWRtaW4="
-// YWRtaW46YWRtaW4=
-
 app.post('/login', async (req, res) => {
     try {
-    
         const {user, pass} = req['body'];
         const buff = Buffer.from(`${user}:${pass}`);
         const basicAuth = `Basic ${buff.toString('base64')}`;
@@ -72,8 +70,10 @@ app.post('/transaction/start', async (req, res) => {
     if( !gate || !gates.get(gate) ) return res.status(401).send('gate not found');
     
     else if( !camera ){
+        console.log(`Transaction Start Error: Camera Not Found, !Camera`);
         return res.status(401).send('camera not found');
     }else if(!gates.get(gate).isValidCamera(camera)){
+        console.log(`Transaction Start Error: Camera Not Found, !isValidCamera`);
         return res.status(401).send('camera not found');
     }
     

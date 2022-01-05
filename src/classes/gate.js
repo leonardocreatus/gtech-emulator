@@ -9,7 +9,7 @@ class Gate {
     #id;
 
     constructor({id, cameras}, app){
-        console.log(`New Gate, id: ${id}, cameras: ${cameras}`);
+        console.log(`New Gate, id: ${id}, cameras: ${JSON.stringify(cameras)}`);
 
         this.#id = id;
         for(let { host } of cameras){
@@ -33,11 +33,11 @@ class Gate {
 }
 
 const getGates = async () => {
-    // let {data: result} = await axios.get('http://127.0.0.1/rest/api/v1/gates')
+    let {data: result} = await axios.get('http://127.0.0.1/rest/api/v1/gates')
     
     //! DEBUG
-    const { readFile } = promises;
-    result = await JSON.parse(await readFile('./temp/gates.json'));
+    // const { readFile } = promises;
+    // let result = await JSON.parse(await readFile('./temp/gates.json'));
     //! DEBUG
 
     result = JSON.stringify(result);
