@@ -26,7 +26,11 @@ new OCR(event, io);
 io.on('connection', socket => console.log('Socket Conectado'));
 
 event.on('container', data => io.emit('container', data));
-event.on('plate', data => io.emit('plate', data));
+event.on('plate', data => {
+    console.log('Receive plate event:', data);
+    const res = io.emit('plate', data);
+    console.log('Send emit:', res)
+});
 
 let _gates = await getGates();
 let gates = new Map();

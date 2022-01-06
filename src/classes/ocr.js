@@ -12,10 +12,10 @@ class OCR {
 
             let indexPlate = line.indexOf(ss_plate);
             let indexContainer = line.indexOf(ss_container);
-            console.log(`${line}, as plate: ${indexPlate}`);
+            // console.log(`${line}, as plate: ${indexPlate}`);
             if(indexPlate != -1){
                 let ss = line.substring(indexPlate + ss_plate.length, line.indexOf(' in'));
-                console.log(ss);
+                console.log('PLATE:', ss);
                 event.emit('plate', ss);
             }else if(indexContainer != -1){
                 let ss = line.substring(indexContainer + ss_container.length, line.indexOf(' in'));
