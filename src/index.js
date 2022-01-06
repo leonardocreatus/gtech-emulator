@@ -106,7 +106,7 @@ app.post('/transaction/end', async (req, res) => {
     if( !body['gate'] || !gates.get(Number(body['gate'])) ){
         console.log('Gate not found');
         return res.status(401).send('gate not found');
-    } else if( !body['camera'] || !gates.get(body['gate']).isValidCamera(body['camera']) ){
+    } else if( !body['camera'] || !gates.get(Number(body['gate'])).isValidCamera(body['camera']) ){
         console.log('Camera not found');
         return res.status(401).send('camera not found');
     }
