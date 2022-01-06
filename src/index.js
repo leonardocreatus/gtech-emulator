@@ -37,6 +37,17 @@ for(let g of _gates){
 
 console.log('Gates', gates);
 
+for (const [key, value] of gates.entries()) {
+    // console.log(key, value);
+    console.log(`GateID: ${key}, Object: ${value}`);
+    try {
+        console.log(`isValid 10.10.14.112:4022/plate: ${value.isValidCamera('10.10.14.112:4022/plate')}`);
+    }catch(error){
+        console.log(`isValid Error: ${error}`);
+    }
+    
+}
+
 // console.log('isValid', gates.get(123456).isValidCamera("10.17.1.34"));
 
 app.get('/list', (req, res) => {

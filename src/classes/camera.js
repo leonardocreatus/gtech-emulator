@@ -16,6 +16,7 @@ class Camera {
     #last;
 
     constructor(ip, app){
+        console.log(`New Camera, host: ${ip}`);
         this.#ip = ip;
         console.log(ip);
         const url = new URL('http://' + ip );

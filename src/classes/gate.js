@@ -9,7 +9,7 @@ class Gate {
     #id;
 
     constructor({id, cameras}, app){
-        console.log(`New Gate, id: ${id}, cameras: ${JSON.stringify(cameras)}`);
+        console.log(`New Gate, id: ${id}`);
 
         this.#id = id;
         for(let { host } of cameras){
