@@ -41,6 +41,8 @@ class Camera {
 
 
     async setImage(base64){
+        
+        console.log(new Date());
         console.log('set image in camera');
         const binary = Buffer.from(base64, 'base64');
         console.log('converting to binary');
