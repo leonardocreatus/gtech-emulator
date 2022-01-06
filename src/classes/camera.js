@@ -22,7 +22,7 @@ class Camera {
         const url = new URL('http://' + ip );
         
         app.get(url['pathname'], async (req, res) => {
-            console.log(url['pathname'])
+            // console.log(url['pathname'])
             const image = this.image;
             if(image == undefined) return res.send();
 
