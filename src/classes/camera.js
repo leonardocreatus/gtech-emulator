@@ -24,7 +24,10 @@ class Camera {
         app.get(url['pathname'], async (req, res) => {
             // console.log(url['pathname'])
             const image = this.image;
-            if(image == undefined) return res.send();
+            if(image == undefined) {
+                console.log( 'Image == Undefined');
+                return res.send();
+            }
 
             res.writeHead(200, {
                 'Host': this.host,
