@@ -6,6 +6,7 @@ import {URL} from 'url'
 
 const proportion = 3;
 
+
 class Camera {
     #ip;
     #transaction = false;
@@ -14,8 +15,10 @@ class Camera {
     #hasImage = false;
     #count = 0;
     #last;
+    #event;
 
-    constructor(ip, app){
+    constructor(ip, app, event){
+        this.#event = event;
         console.log(`New Camera, host: ${ip}`);
         this.#ip = ip;
         console.log(ip);
@@ -41,7 +44,7 @@ class Camera {
 
 
     async setImage(base64){
-        
+
         console.log(new Date());
         console.log('set image in camera');
         const binary = Buffer.from(base64, 'base64');
@@ -49,6 +52,8 @@ class Camera {
         const {width, height} = sizeOf(binary);
         console.log('sizeOf');
         // console.log('black', this.#black);
+        this.#event.emit('image', '!!');
+        
         try{
             const buffer = Buffer.from(blackImage, 'base64');
             console.log(`set buffer black to width: ${width}, height: ${height}`);

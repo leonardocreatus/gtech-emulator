@@ -8,15 +8,16 @@ class Gate {
     #cameras = new Map();
     #id;
 
-    constructor({id, cameras}, app){
+    constructor({id, cameras}, app, event){
         console.log(`New Gate, id: ${id}`);
 
         this.#id = id;
         const address = ip.address();
 
         for(let { host } of cameras){
-            if(host.includes(address)) this.#cameras.set(host, new Camera(host, app) );
+            if(host.includes(address)) this.#cameras.set(host, new Camera(host, app, event) );
         }
+        
     }
 
     set transaction({ip, value}){

@@ -25,9 +25,13 @@ new OCR(event, io);
 
 io.on('connection', socket => console.log('Socket Conectado'));
 
+event.on('image', data => {
+    console.log('Captured image in', new Date());
+})
+
 event.on('container', data => io.emit('container', data));
 event.on('plate', data => {
-    console.log('Receive plate event:', data);
+    console.log('Receive plate event in', data);
     const res = io.emit('plate', data);
     console.log('Send emit:', res)
 });
@@ -36,7 +40,7 @@ let _gates = await getGates();
 let gates = new Map();
 
 for(let g of _gates){
-    gates.set(Number(g['id']), new Gate(g, app) );
+    gates.set(Number(g['id']), new Gate(g, app, event));
 }
 
 console.log('Gates', gates);
