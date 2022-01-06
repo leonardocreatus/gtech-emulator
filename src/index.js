@@ -3,7 +3,7 @@ import Event from 'events';
 import { Server } from 'socket.io'
 import http from 'http';
 
-import { Gate, getGates } from "./classes/gate.js";
+import { Gate, getGates, getIPAddress } from "./classes/gate.js";
 import { finishTransaction, startTransaction } from './tools/transactions.js';
 import { OCR } from './classes/ocr.js';
 

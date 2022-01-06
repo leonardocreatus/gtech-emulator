@@ -12,8 +12,10 @@ class Gate {
         console.log(`New Gate, id: ${id}`);
 
         this.#id = id;
+        const address = ip.address();
+
         for(let { host } of cameras){
-            this.#cameras.set(host, new Camera(host, app) );
+            if(host.includes(address)) this.#cameras.set(host, new Camera(host, app) );
         }
     }
 
@@ -47,5 +49,7 @@ const getGates = async () => {
     return result;
 }
 
-export { Gate, getGates }
+const getIPAddress = () => { return ip.address() };
+
+export { Gate, getGates, getIPAddress }
 
