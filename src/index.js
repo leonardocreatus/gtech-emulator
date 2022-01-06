@@ -66,7 +66,7 @@ app.post('/login', async (req, res) => {
         const basicAuth = `Basic ${buff.toString('base64')}`;
         console.log('encode:', basicAuth);
         const result = await axios.get('http://127.0.0.1/rest/api/v1/login/validation', {headers: { 'Authorization' : basicAuth}});
-        console.log('login result', result);
+        // console.log('login result', result);
         res.send();
     }catch(error){
         console.log('error in login', error);
@@ -101,7 +101,7 @@ app.post('/transaction/start', async (req, res) => {
 
 app.post('/transaction/end', async (req, res) => {
     const { body } = req;
-    console.log('Transaction End Receive:', req);
+    console.log('Transaction End Receive:', body);
     console.log('Gates', gates);
     if( !body['gate'] || !gates.get(Number(body['gate'])) ){
         console.log('Gate not found');

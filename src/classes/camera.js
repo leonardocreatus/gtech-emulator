@@ -25,7 +25,7 @@ class Camera {
             // console.log(url['pathname'])
             const image = this.image;
             if(image == undefined) {
-                console.log( 'Image == Undefined');
+                // console.log( 'Image == Undefined');
                 return res.send();
             }
 

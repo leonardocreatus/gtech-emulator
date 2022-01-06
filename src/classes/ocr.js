@@ -12,6 +12,7 @@ class OCR {
 
             let indexPlate = line.indexOf(ss_plate);
             let indexContainer = line.indexOf(ss_container);
+            console.log(`${line}, as plate: ${indexPlate}`);
             if(indexPlate != -1){
                 let ss = line.substring(indexPlate + ss_plate.length, line.indexOf(' in'));
                 console.log(ss);
