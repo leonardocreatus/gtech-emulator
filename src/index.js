@@ -56,6 +56,7 @@ app.post('/login', async (req, res) => {
         console.log('encode:', basicAuth);
         const result = await axios.get('http://127.0.0.1/rest/api/v1/login/validation', {headers: { 'Authorization' : basicAuth}});
         console.log('login result', result);
+        res.send();
     }catch(error){
         console.log('error in login', error);
         return res.status(400).send("Acesso inválido");
