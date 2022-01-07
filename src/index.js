@@ -22,17 +22,22 @@ const io = new Server(httpServer);
 
 const event = new Event();
 new OCR(event, io);
+ 
+let socket_connected;
 
-io.on('connection', socket => console.log('Socket Conectado'));
+io.on('connection', socket => {
+    socket_connected = socket;
+    console.log('Socket Conectado')
+});
 
 event.on('image', data => {
     console.log('Captured image in', new Date());
 })
 
-event.on('container', data => io.emit('container', data));
+event.on('container', data => socket_connected.emit('container', data));
 event.on('plate', data => {
     console.log('Receive plate event in', data);
-    const res = io.emit('plate', data);
+    const res = socket_connected.emit('plate', data);
     console.log('Send emit:', res)
 });
 
