@@ -75,6 +75,7 @@ app.get('/list', (req, res) => {
 
 app.get('/gates', (req, res) => {
     _gates.forEach(({cameras, name}) => console.log(`name: ${name}, cameras: ${cameras.host}`));
+
     return res.send(_gates);
 });
 

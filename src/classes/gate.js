@@ -42,10 +42,19 @@ const getGates = async () => {
     // const { readFile } = promises;
     // let result = await JSON.parse(await readFile('./temp/gates.json'));
     //! DEBUG
+    const address = ip.address();
 
     result = JSON.stringify(result);
-    result = result.replace(/127.0.0.1/g, ip.address());
+    result = result. replace(/127.0.0.1/g, address);
     result = JSON.parse(result);
+
+    result = result.map( gate => {
+        gate['cameras'] = gate['cameras'].filter(({ip}) => {
+            return ip.includes(address);
+        });
+
+        return gate;
+    });
 
     return result;
 }
