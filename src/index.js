@@ -34,10 +34,16 @@ event.on('image', data => {
     console.log('Captured image in', new Date());
 })
 
-event.on('container', data => socket_connected.emit('container', data));
+event.on('container', data => {
+    // socket_connected.emit('container', data)
+    console.log('Receive plate container in', data);
+    const res = socket_connected.emit('/client/container', data);
+    console.log('Send emit:', res)
+});
+
 event.on('plate', data => {
     console.log('Receive plate event in', data);
-    const res = socket_connected.emit('plate', data);
+    const res = socket_connected.emit('/client/plate', data);
     console.log('Send emit:', res)
 });
 
