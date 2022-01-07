@@ -51,7 +51,7 @@ const getGates = async () => {
     result = result.map( gate => {
         console.log('cameras', gate['cameras']);
         gate['cameras'] = gate['cameras'].filter(({ip}) => {
-            return ip.includes(address);
+            return !ip;
         });
 
         return gate;
